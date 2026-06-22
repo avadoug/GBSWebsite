@@ -1,0 +1,168 @@
+window.GBS_SITE_DATA = {
+  site: {
+    name: 'GBS',
+    fullName: 'Growers Breeders Smokers',
+    discord: 'https://discord.gg/YxJYnnKWHf',
+    featuredTitle: 'This is the GBS control room.',
+    featuredText: 'A modular website built to hold breeding projects, Discord bots, games, smoke reports, resources, sponsors, events, and future weird machinery without needing a rebuild every time.'
+  },
+  stats: [
+    { value: '350+', label: 'community members' },
+    { value: '24/7', label: 'Discord grow talk' },
+    { value: '∞', label: 'room to expand' }
+  ],
+  announcements: [
+    'GBS Discord is open for growers, breeders, and smokers who care about the plant.',
+    'Add new projects, bots, games, and smoke reports from the Content Manager.',
+    'Built for grow logs, strain work, member spotlights, giveaways, and future bot docs.'
+  ],
+  projects: [
+    {
+      title: 'Apollo 13 F2 / F3 Work',
+      tag: 'Breeding',
+      status: 'Active',
+      link: '',
+      description: 'Preservation and selection work around Apollo 13 with keeper hunting, structure notes, effect tracking, and future F-generation goals.',
+      notes: 'Track males, females, terpene lanes, vigor, flower time, euphoric ceiling, and release candidates.'
+    },
+    {
+      title: 'C99 × Vortex Universe',
+      tag: 'Breeding',
+      status: 'Flagship',
+      link: '',
+      description: 'A high-energy project lane for vivid fruit, lift, clarity, duration, and weird standout phenos that refuse to be boring.',
+      notes: 'Use this page for crosses, smoke reports, keeper rankings, and names like Galactic Princess, Royal Warbird, Blue Gown, and Wicked Highness.'
+    },
+    {
+      title: 'GBS Discord Bot Suite',
+      tag: 'Software',
+      status: 'Building',
+      link: '#bots',
+      description: 'A hub for bots that answer grow questions, identify issues, explain lineages, manage events, and keep the community humming.',
+      notes: 'Ideal place to publish command lists, install guides, feature requests, and changelogs.'
+    },
+    {
+      title: 'Smoke Report Archive',
+      tag: 'Community',
+      status: 'Ready',
+      link: '#smoke-reports',
+      description: 'A structured archive for strain experience reports that go deeper than “fire” and actually say something useful.',
+      notes: 'Track onset, head/body split, flavor translation, duration, anxiety risk, ceiling, medicinal value, and breeding value.'
+    },
+    {
+      title: 'Grow-Off Headquarters',
+      tag: 'Events',
+      status: 'Planned',
+      link: '',
+      description: 'A home for community runs, weekly updates, leaderboards, judging criteria, sponsor shout-outs, and final reports.',
+      notes: 'Add photo galleries later with grower names, phenos, dates, and harvest outcomes.'
+    },
+    {
+      title: 'GBS Media & Podcast Corner',
+      tag: 'Media',
+      status: 'Planned',
+      link: '',
+      description: 'A flexible section for videos, Bud Rich Radio links, guest clips, breeder interviews, and community highlights.',
+      notes: 'Future upgrade: YouTube embeds, RSS feed, episode cards, and show notes.'
+    }
+  ],
+  bots: [
+    {
+      title: 'GrowBot',
+      status: 'Prototype',
+      commands: ['/askgrow', '/diagnose', '/feedcheck', '/ipm'],
+      link: '',
+      description: 'Answers cannabis growing questions with practical, fun, detailed guidance for new growers and experienced growers.'
+    },
+    {
+      title: 'Strain Vault Bot',
+      status: 'Idea',
+      commands: ['/strain', '/lineage', '/breeder', '/compare'],
+      link: '',
+      description: 'A lineage and strain-history bot for looking up genetics, breeders, family trees, and related cultivars.'
+    },
+    {
+      title: 'GBS Event Bot',
+      status: 'Planned',
+      commands: ['/event', '/giveaway', '/draw', '/sponsor'],
+      link: '',
+      description: 'Handles giveaways, sponsor prize boards, grow-off schedules, and member notifications.'
+    },
+    {
+      title: 'Memory Watchdog',
+      status: 'Utility',
+      commands: ['restart-on-memory', 'uptime-log', 'bot-health'],
+      link: '',
+      description: 'A server helper that watches bot memory usage and restarts services before they turn into molten spaghetti.'
+    }
+  ],
+  games: [
+    {
+      title: 'Painting Room',
+      genre: 'Creative Wall',
+      status: 'Live',
+      link: 'painting-room/',
+      description: 'A persistent collaborative mural where members can draw, tag, import images, stencil shapes, save snapshots, and export the wall.'
+    },
+    {
+      title: 'Nightshade Arena',
+      genre: 'Fighting Game',
+      status: 'Concept',
+      link: '',
+      description: 'A GBS-flavored browser fighter inspired by arcade-era spectacle, with original cannabis-themed fighters and polished pixel energy.'
+    },
+    {
+      title: 'Pheno Hunt Bingo',
+      genre: 'Community Game',
+      status: 'Easy Build',
+      link: '',
+      description: 'Members mark traits as they appear: mutant leaf, pineapple nose, velvet stem, runt rebound, keeper smoke, purple fade.'
+    },
+    {
+      title: 'Terp Trader',
+      genre: 'Strategy Tool',
+      status: 'Idea',
+      link: '',
+      description: 'A tiny game about building lines, balancing effect, flavor, vigor, and hype without accidentally breeding mids in a cape.'
+    },
+    {
+      title: 'Grow Room Simulator',
+      genre: 'Education',
+      status: 'Future',
+      link: '',
+      description: 'A training game for PPFD, VPD, watering, IPM, deficiency triage, and the ancient art of not loving plants to death.'
+    }
+  ],
+  resources: [
+    {
+      title: 'Declaration of Expectations',
+      category: 'Community',
+      link: '',
+      description: 'GBS standards for respect, no racism, no sexism, no hate speech, and real connection to the cannabis plant.'
+    },
+    {
+      title: 'Bot Install Notes',
+      category: 'Software',
+      link: '',
+      description: 'Raspberry Pi and PC setup notes for Discord bots, environment variables, tokens, permissions, and service restarts.'
+    },
+    {
+      title: 'Grow SOP Shelf',
+      category: 'Cultivation',
+      link: '',
+      description: 'A future home for Dominion Blend, living soil, teas, IPM, cloning, drying, and breeding SOPs.'
+    },
+    {
+      title: 'Sponsor & Prize Board',
+      category: 'GBS',
+      link: '',
+      description: 'Track sponsors, prizes, giveaway rules, winners, and shout-outs without hunting through old Discord messages.'
+    }
+  ],
+  customSections: [
+    {
+      title: 'Future Expansion Slots',
+      body: 'This site is intentionally built like a clean 2015-style command center: simple pages, strong cards, readable text, and modular sections. Add merch, podcasts, seed project pages, photo galleries, sponsor pages, grow-off brackets, download libraries, or a full database later without changing the whole design.'
+    }
+  ]
+};

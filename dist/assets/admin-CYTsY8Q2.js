@@ -1,0 +1,19 @@
+import{t as e}from"./styles-Q4wE1l15.js";import{t}from"./content-DY3zaZrY.js";var n=e((()=>{(function(){let e=`gbs_site_data_v1`,t=`gbs_smoke_reports_v1`,n=window.GBS_SITE_DATA||{},r=s(localStorage.getItem(e))||o(n),i=(e,t=document)=>t.querySelector(e),a=(e,t=document)=>Array.from(t.querySelectorAll(e));function o(e){return JSON.parse(JSON.stringify(e||{}))}function s(e){if(!e)return null;try{return JSON.parse(e)}catch{return null}}function c(e){return String(e||``).replaceAll(`&`,`&amp;`).replaceAll(`<`,`&lt;`).replaceAll(`>`,`&gt;`).replaceAll(`"`,`&quot;`).replaceAll(`'`,`&#039;`)}function l(){localStorage.setItem(e,JSON.stringify(r)),h()}function u(e,t){let n=Object.fromEntries(t.entries());return e===`bots`&&(n.commands=String(n.commands||``).split(`,`).map(e=>e.trim()).filter(Boolean)),n}function d(){a(`.admin-form`).forEach(e=>{e.addEventListener(`submit`,t=>{t.preventDefault();let n=e.dataset.type,i=u(n,new FormData(e));r[n]||(r[n]=[]),r[n].push(i),e.reset(),l()})})}function f(e,t,n=[]){let o=i(t);if(!o)return;let s=r[e]||[];if(!s.length){o.innerHTML=`<div class="admin-row"><div><h3>No items yet</h3><p>Add one above.</p></div></div>`;return}o.innerHTML=s.map((t,r)=>{let i=n.map(e=>{let n=Array.isArray(t[e])?t[e].join(`, `):t[e];return n?`<span class="tag">${c(n)}</span>`:``}).join(` `);return`
+        <div class="admin-row">
+          <div>
+            <h3>${c(t.title||t.strain||`Untitled`)}</h3>
+            <p>${i}</p>
+            <p>${c(t.description||t.notes||t.body||``)}</p>
+          </div>
+          <button class="delete-btn" data-type="${e}" data-index="${r}">Delete</button>
+        </div>
+      `}).join(``),a(`.delete-btn[data-type="${e}"]`,o).forEach(t=>{t.addEventListener(`click`,()=>{let n=Number(t.dataset.index);r[e].splice(n,1),l()})})}function p(){return s(localStorage.getItem(t))||[]}function m(){let e=p(),n=i(`#adminReports`);if(n){if(!e.length){n.innerHTML=`<div class="admin-row"><div><h3>No local smoke reports</h3><p>Reports from the public form will appear here.</p></div></div>`;return}n.innerHTML=e.slice().reverse().map((t,n)=>{let r=e.length-1-n;return`
+        <div class="admin-row">
+          <div>
+            <h3>${c(t.strain)}</h3>
+            <p><span class="tag">${c(t.effect)}</span> <span class="tag">${c(t.rating)}/10</span> <span class="tag">${c(t.date)}</span></p>
+            <p>${c(t.notes||``)}</p>
+          </div>
+          <button class="delete-btn" data-report-index="${r}">Delete</button>
+        </div>
+      `}).join(``),a(`[data-report-index]`,n).forEach(e=>{e.addEventListener(`click`,()=>{let n=p();n.splice(Number(e.dataset.reportIndex),1),localStorage.setItem(t,JSON.stringify(n)),m()})})}}function h(){f(`projects`,`#adminProjects`,[`tag`,`status`]),f(`bots`,`#adminBots`,[`status`,`commands`]),f(`games`,`#adminGames`,[`genre`,`status`]),f(`resources`,`#adminResources`,[`category`]),m()}function g(){let e=p();return JSON.stringify({...r,smokeReports:e},null,2)}function _(){i(`#downloadJson`)?.addEventListener(`click`,()=>{let e=new Blob([g()],{type:`application/json`}),t=URL.createObjectURL(e),n=document.createElement(`a`);n.href=t,n.download=`gbs-site-data.json`,n.click(),URL.revokeObjectURL(t)}),i(`#copyJson`)?.addEventListener(`click`,async()=>{await navigator.clipboard.writeText(g()),alert(`GBS JSON copied to clipboard. Tiny file goblin captured successfully.`)}),i(`#importJson`)?.addEventListener(`click`,()=>{let n=i(`#importBox`)?.value,a=s(n);if(!a){alert(`That JSON did not parse. Check commas, quotes, and brackets.`);return}let{smokeReports:o,...c}=a;r=c,localStorage.setItem(e,JSON.stringify(r)),Array.isArray(o)&&localStorage.setItem(t,JSON.stringify(o)),h(),alert(`Imported. View the site to see your local changes.`)}),i(`#resetDemo`)?.addEventListener(`click`,()=>{confirm(`Reset local content manager data back to demo data?`)&&(r=o(n),localStorage.setItem(e,JSON.stringify(r)),h())})}d(),_(),h()})()}));t(),n();

@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GBS | Growers Breeders Smokers</title>
+  <meta name="description" content="GBS is a cannabis community hub for growers, breeders, smokers, Discord bots, projects, games, smoke reports, and real plant craft." />
+  <meta property="og:title" content="GBS | Growers Breeders Smokers" />
+  <meta property="og:description" content="Growers who grow. Breeders who breed. Smokers who care for the plant." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#133a27" />
+  <link rel="icon" href="/assets/favicon-BR1mgoJZ.svg" type="image/svg+xml" />
+  <script type="module" crossorigin src="/assets/main-BOzUK0RL.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-Q4wE1l15.js">
+  <link rel="modulepreload" crossorigin href="/assets/content-DY3zaZrY.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-T2tDOMim.css">
+</head>
+<body>
+  <div class="age-gate" id="ageGate" aria-hidden="true">
+    <div class="age-card" role="dialog" aria-labelledby="ageTitle" aria-describedby="ageText">
+      <div class="brand-mark small">GBS</div>
+      <h1 id="ageTitle">Adults Only</h1>
+      <p id="ageText">This site discusses cannabis cultivation, breeding, smoke reports, and community projects. Confirm you are of legal age in your location.</p>
+      <div class="age-actions">
+        <button class="btn primary" id="enterSite">Enter GBS</button>
+        <button class="btn ghost" id="leaveSite">Leave</button>
+      </div>
+      <p class="micro">GBS is an education and community hub. No cannabis sales happen here.</p>
+    </div>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container nav-shell">
+      <a class="brand" href="#home" aria-label="GBS home">
+        <span class="brand-mark">GBS</span>
+        <span class="brand-text">
+          <strong>Growers Breeders Smokers</strong>
+          <em>Real growers. Real breeders. Real plant talk.</em>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="#projects">Projects</a>
+        <a href="#bots">Bots</a>
+        <a href="#games">Games</a>
+        <a href="painting-room/">Painting Room</a>
+        <a href="#smoke-reports">Smoke Reports</a>
+        <a href="#resources">Resources</a>
+        <a href="admin.html" class="admin-link">Content Manager</a>
+        <a href="https://discord.gg/YxJYnnKWHf" class="join-pill" target="_blank" rel="noopener">Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">GBS HQ / Discord command center / strain notebook / arcade cabinet</p>
+          <h1>A home base for the GBS universe.</h1>
+          <p class="hero-lead">Projects, bots, smoke reports, games, breeding work, community updates, and whatever wild-but-useful thing gets added next.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="https://discord.gg/YxJYnnKWHf" target="_blank" rel="noopener">Join the Discord</a>
+            <a class="btn secondary" href="#smoke-reports">Write a Smoke Report</a>
+          </div>
+          <div class="quick-stats" id="quickStats" aria-label="GBS quick stats"></div>
+        </div>
+        <aside class="hero-panel">
+          <div class="panel-topline">Live Board</div>
+          <h2 id="featuredTitle">Loading GBS signal...</h2>
+          <p id="featuredText"></p>
+          <div class="signal-bars" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section-tight" id="announcementStrip">
+      <div class="container">
+        <div class="ticker" aria-label="GBS announcements">
+          <span>GBS Broadcast</span>
+          <div id="announcementTrack"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Breeding, hunts, experiments</p>
+          <h2>Project Boards</h2>
+          <p>Track seed lines, releases, grow-offs, breeding notes, collabs, and the small decisions that become legend later.</p>
+        </div>
+        <div class="filters" id="projectFilters"></div>
+        <div class="card-grid" id="projectGrid"></div>
+      </div>
+    </section>
+
+    <section class="section split-section" id="bots">
+      <div class="container split-grid">
+        <div class="section-heading sticky-heading">
+          <p class="eyebrow">Discord utility bay</p>
+          <h2>Bot Garage</h2>
+          <p>Add bots, commands, status, links, roadmap notes, and setup instructions. This is where your Discord tools get their showroom shine.</p>
+          <a class="btn secondary" href="admin.html#bots">Add a Bot</a>
+        </div>
+        <div class="stack-list" id="botList"></div>
+      </div>
+    </section>
+
+    <section class="section alt" id="games">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Arcade wing</p>
+          <h2>Games & Experiments</h2>
+          <p>A flexible space for web games, Discord games, mini tools, calculators, grow simulators, or any strange little digital creature you decide to release.</p>
+        </div>
+        <div class="game-grid" id="gameGrid"></div>
+      </div>
+    </section>
+
+    <section class="section" id="smoke-reports">
+      <div class="container smoke-layout">
+        <div>
+          <div class="section-heading left">
+            <p class="eyebrow">Flavor, onset, effect, keeper notes</p>
+            <h2>Smoke Report Lab</h2>
+            <p>Capture the real stuff: nose, flavor, mental tone, body feel, duration, tolerance ceiling, and whether a cultivar earns a chair at the keeper table.</p>
+          </div>
+          <form class="smoke-form" id="smokeForm">
+            <label>Strain or Cross
+              <input required name="strain" placeholder="Example: Space Candy × C99 × Vortex" />
+            </label>
+            <label>Aroma / Nose
+              <input name="aroma" placeholder="Mango peel, funk, lemon cleaner, burnt sugar..." />
+            </label>
+            <label>Flavor
+              <input name="flavor" placeholder="What actually comes through on smoke/vape?" />
+            </label>
+            <div class="form-row">
+              <label>Effect Type
+                <select name="effect">
+                  <option>Clear / Up</option>
+                  <option>Euphoric</option>
+                  <option>Creative</option>
+                  <option>Heavy / Body</option>
+                  <option>Sleepy</option>
+                  <option>Hybrid / Layered</option>
+                </select>
+              </label>
+              <label>Rating
+                <select name="rating">
+                  <option>10</option><option>9</option><option>8</option><option>7</option><option>6</option><option>5</option>
+                </select>
+              </label>
+            </div>
+            <label>Keeper Notes
+              <textarea name="notes" placeholder="Onset, duration, ceiling, flaws, breeding value, who should smoke it..."></textarea>
+            </label>
+            <button class="btn primary" type="submit">Save Report Locally</button>
+            <p class="micro">Static-site mode: reports save in this browser. Export them from the Content Manager when you want to publish permanently.</p>
+          </form>
+        </div>
+        <aside class="report-board">
+          <div class="board-header">
+            <h3>Latest Smoke Reports</h3>
+            <button class="btn mini" id="clearLocalReports" type="button">Clear Local</button>
+          </div>
+          <div id="smokeReportList"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section alt" id="resources">
+      <div class="container resource-grid">
+        <div class="section-heading left">
+          <p class="eyebrow">Knowledge shelves</p>
+          <h2>Resource Library</h2>
+          <p>Keep SOPs, grow guides, community rules, bot docs, cannabis education, podcast links, sponsor pages, and downloadable files in one expandable spot.</p>
+          <a class="btn secondary" href="admin.html#resources">Manage Resources</a>
+        </div>
+        <div id="resourceList" class="resource-list"></div>
+      </div>
+    </section>
+
+    <section class="section" id="customSectionsWrap">
+      <div class="container" id="customSections"></div>
+    </section>
+
+    <section class="cta-band">
+      <div class="container cta-grid">
+        <div>
+          <p class="eyebrow">Open the door</p>
+          <h2>Grow some respect.</h2>
+          <p>GBS is for people with a real link to the plant. Show your grow, your genetics, your smoke notes, your learning, or your love for the craft.</p>
+        </div>
+        <a class="btn primary big" href="https://discord.gg/YxJYnnKWHf" target="_blank" rel="noopener">Join GBS Discord</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="brand-mark footer-mark">GBS</div>
+        <p>Growers Breeders Smokers. Community first, plant craft always.</p>
+      </div>
+      <div>
+        <h4>Site Sections</h4>
+        <a href="#projects">Projects</a>
+        <a href="#bots">Bots</a>
+        <a href="#games">Games</a>
+        <a href="painting-room/">Painting Room</a>
+        <a href="#smoke-reports">Smoke Reports</a>
+      </div>
+      <div>
+        <h4>Admin</h4>
+        <a href="admin.html">Content Manager</a>
+        <a href="README.md">README</a>
+      </div>
+      <div>
+        <h4>Legal Note</h4>
+        <p class="micro">Educational/community website. Follow your local laws. No cannabis sales.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-top" id="backTop" aria-label="Back to top">↑</button>
+
+</body>
+</html>

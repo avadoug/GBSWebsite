@@ -1,0 +1,25 @@
+{
+  "name": "gbs-website",
+  "version": "1.0.0",
+  "description": "A modular static website for **GBS / Growers Breeders Smokers**.",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview --host 0.0.0.0"
+  },
+  "keywords": [
+    "gbs",
+    "painting-room",
+    "supabase",
+    "vercel"
+  ],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.108.2"
+  },
+  "devDependencies": {
+    "vite": "^8.0.16"
+  }
+}

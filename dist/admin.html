@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GBS Content Manager</title>
+  <meta name="description" content="Local content manager for the GBS website." />
+  <meta name="theme-color" content="#133a27" />
+  <link rel="icon" href="/assets/favicon-BR1mgoJZ.svg" type="image/svg+xml" />
+  <script type="module" crossorigin src="/assets/admin-CYTsY8Q2.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/styles-Q4wE1l15.js">
+  <link rel="modulepreload" crossorigin href="/assets/content-DY3zaZrY.js">
+  <link rel="stylesheet" crossorigin href="/assets/styles-T2tDOMim.css">
+</head>
+<body class="admin-body">
+  <header class="site-header admin-header">
+    <div class="container nav-shell">
+      <a class="brand" href="index.html#home">
+        <span class="brand-mark">GBS</span>
+        <span class="brand-text">
+          <strong>Content Manager</strong>
+          <em>Static site controls, local drafts, exports</em>
+        </span>
+      </a>
+      <nav class="main-nav open-static">
+        <a href="index.html#projects">View Site</a>
+        <a href="#projects">Projects</a>
+        <a href="#bots">Bots</a>
+        <a href="#games">Games</a>
+        <a href="#reports">Reports</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section admin-main">
+    <div class="container admin-grid">
+      <aside class="admin-sidebar">
+        <div class="admin-card">
+          <h1>GBS CMS Lite</h1>
+          <p>This manager saves edits in your browser and exports clean JSON. For permanent publishing, paste the exported data into <code>assets/js/content.js</code> or wire it to a database later.</p>
+          <div class="admin-actions">
+            <button class="btn primary" id="downloadJson">Download JSON</button>
+            <button class="btn secondary" id="copyJson">Copy JSON</button>
+            <button class="btn ghost" id="resetDemo">Reset Demo Data</button>
+          </div>
+        </div>
+        <div class="admin-card">
+          <h2>Import JSON</h2>
+          <textarea id="importBox" placeholder="Paste exported GBS_SITE_DATA JSON here..."></textarea>
+          <button class="btn secondary" id="importJson">Import</button>
+        </div>
+      </aside>
+
+      <section class="admin-panels">
+        <section class="admin-card" id="projects">
+          <div class="panel-heading">
+            <h2>Add Project</h2>
+            <span>Breeding runs, hunts, releases, collabs</span>
+          </div>
+          <form class="admin-form" data-type="projects">
+            <input name="title" placeholder="Project name" required />
+            <input name="tag" placeholder="Tag, e.g. Breeding / Hunt / Release" />
+            <input name="status" placeholder="Status, e.g. Active / Planned" />
+            <input name="link" placeholder="Optional link" />
+            <textarea name="description" placeholder="Short description"></textarea>
+            <textarea name="notes" placeholder="Notes, lineage, goals"></textarea>
+            <button class="btn primary">Add Project</button>
+          </form>
+          <div class="admin-list" id="adminProjects"></div>
+        </section>
+
+        <section class="admin-card" id="bots">
+          <div class="panel-heading">
+            <h2>Add Bot</h2>
+            <span>Discord commands, tools, status</span>
+          </div>
+          <form class="admin-form" data-type="bots">
+            <input name="title" placeholder="Bot name" required />
+            <input name="status" placeholder="Status, e.g. Online / Building / Idea" />
+            <input name="commands" placeholder="Commands, comma separated" />
+            <input name="link" placeholder="Optional link" />
+            <textarea name="description" placeholder="What it does"></textarea>
+            <button class="btn primary">Add Bot</button>
+          </form>
+          <div class="admin-list" id="adminBots"></div>
+        </section>
+
+        <section class="admin-card" id="games">
+          <div class="panel-heading">
+            <h2>Add Game</h2>
+            <span>Web games, Discord games, simulators</span>
+          </div>
+          <form class="admin-form" data-type="games">
+            <input name="title" placeholder="Game name" required />
+            <input name="genre" placeholder="Genre" />
+            <input name="status" placeholder="Status" />
+            <input name="link" placeholder="Optional link" />
+            <textarea name="description" placeholder="Game description"></textarea>
+            <button class="btn primary">Add Game</button>
+          </form>
+          <div class="admin-list" id="adminGames"></div>
+        </section>
+
+        <section class="admin-card" id="resources">
+          <div class="panel-heading">
+            <h2>Add Resource</h2>
+            <span>SOPs, guides, docs, media, sponsor links</span>
+          </div>
+          <form class="admin-form" data-type="resources">
+            <input name="title" placeholder="Resource title" required />
+            <input name="category" placeholder="Category" />
+            <input name="link" placeholder="Optional link" />
+            <textarea name="description" placeholder="Short description"></textarea>
+            <button class="btn primary">Add Resource</button>
+          </form>
+          <div class="admin-list" id="adminResources"></div>
+        </section>
+
+        <section class="admin-card" id="reports">
+          <div class="panel-heading">
+            <h2>Local Smoke Reports</h2>
+            <span>Reports saved from the public form</span>
+          </div>
+          <div class="admin-list" id="adminReports"></div>
+        </section>
+      </section>
+    </div>
+  </main>
+
+</body>
+</html>

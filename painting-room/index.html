@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Painting Room | GBS</title>
+  <meta name="description" content="A persistent GBS collaborative mural where visitors can paint, tag, import images, stencil, snapshot, and export the wall." />
+  <meta property="og:title" content="GBS Painting Room" />
+  <meta property="og:description" content="A living wall anyone can paint." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0c1411" />
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body class="painting-room-body">
+  <div class="age-gate" id="ageGate" aria-hidden="true">
+    <div class="age-card" role="dialog" aria-labelledby="ageTitle" aria-describedby="ageText">
+      <div class="brand-mark small">GBS</div>
+      <h1 id="ageTitle">Adults Only</h1>
+      <p id="ageText">This site discusses cannabis cultivation, breeding, smoke reports, and community projects. Confirm you are of legal age in your location.</p>
+      <div class="age-actions">
+        <button class="btn primary" id="enterSite">Enter GBS</button>
+        <button class="btn ghost" id="leaveSite">Leave</button>
+      </div>
+      <p class="micro">GBS is an education and community hub. No cannabis sales happen here.</p>
+    </div>
+  </div>
+
+  <header class="site-header painting-header" id="top">
+    <div class="container nav-shell">
+      <a class="brand" href="../index.html#home" aria-label="GBS home">
+        <span class="brand-mark">GBS</span>
+        <span class="brand-text">
+          <strong>Painting Room</strong>
+          <em>Public mural, studio tools, shared chaos</em>
+        </span>
+      </a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false" id="navToggle">☰</button>
+      <nav class="main-nav" id="mainNav">
+        <a href="../index.html#projects">Projects</a>
+        <a href="../index.html#bots">Bots</a>
+        <a href="../index.html#games">Games</a>
+        <a href="../index.html#smoke-reports">Smoke Reports</a>
+        <a href="./" aria-current="page">Painting Room</a>
+        <a href="../admin.html" class="admin-link">Content Manager</a>
+        <a href="https://discord.gg/YxJYnnKWHf" class="join-pill" target="_blank" rel="noopener">Join Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="painting-room-page">
+    <section class="paint-studio" aria-labelledby="paintingRoomTitle">
+      <div class="container studio-shell">
+        <div class="studio-topbar">
+          <div class="studio-title">
+            <p class="eyebrow">GBS creative wall</p>
+            <h1 id="paintingRoomTitle">Painting Room</h1>
+            <p>A living wall anyone can paint.</p>
+          </div>
+          <div class="studio-status">
+            <div class="presence-card" id="presenceIndicator" aria-live="polite">
+              <span class="presence-dot"></span>
+              <strong id="artistCount">1</strong>
+              <span>artist painting</span>
+            </div>
+            <div class="save-card" aria-live="polite">
+              <span id="saveState">Loaded</span>
+              <strong id="lastSaved">Not saved yet</strong>
+            </div>
+            <div class="account-card" id="accountCard">
+              <span id="accountStatus">Not logged in</span>
+              <strong id="adminBadge" hidden>Admin</strong>
+            </div>
+          </div>
+          <div class="persistence-warning" id="persistenceWarning" hidden>
+            Shared persistence is not connected. This wall is currently saving only in this browser.
+          </div>
+        </div>
+
+        <div class="paint-layout">
+          <aside class="paint-panel tool-dock" aria-label="Painting tools">
+            <div class="panel-kicker">Tools</div>
+            <div class="tool-grid" role="toolbar" aria-label="Drawing tools">
+              <button class="tool-btn active" data-tool="select" type="button" title="Select / move (V)" aria-label="Select tool"><span>V</span></button>
+              <button class="tool-btn" data-tool="brush" type="button" title="Brush (B)" aria-label="Brush tool"><span>BR</span></button>
+              <button class="tool-btn" data-tool="pencil" type="button" title="Pencil" aria-label="Pencil tool"><span>PN</span></button>
+              <button class="tool-btn" data-tool="marker" type="button" title="Marker" aria-label="Marker tool"><span>MK</span></button>
+              <button class="tool-btn" data-tool="spray" type="button" title="Spray paint" aria-label="Spray paint tool"><span>SP</span></button>
+              <button class="tool-btn" data-tool="ink" type="button" title="Calligraphy ink" aria-label="Calligraphy ink tool"><span>IN</span></button>
+              <button class="tool-btn" data-tool="neon" type="button" title="Neon brush" aria-label="Neon brush tool"><span>NE</span></button>
+              <button class="tool-btn" data-tool="chaos" type="button" title="Chaos brush" aria-label="Chaos brush tool"><span>CH</span></button>
+              <button class="tool-btn" data-tool="eraser" type="button" title="Eraser (E)" aria-label="Eraser tool"><span>ER</span></button>
+              <button class="tool-btn" data-tool="line" type="button" title="Line (L)" aria-label="Line tool"><span>LN</span></button>
+              <button class="tool-btn" data-tool="shape" type="button" title="Shape (R/C)" aria-label="Shape tool"><span>SH</span></button>
+              <button class="tool-btn" data-tool="text" type="button" title="Text (T)" aria-label="Text tool"><span>TX</span></button>
+              <button class="tool-btn" data-tool="stencil" type="button" title="Stencil stamps" aria-label="Stencil tool"><span>ST</span></button>
+              <button class="tool-btn" data-tool="pan" type="button" title="Pan canvas" aria-label="Pan tool"><span>PA</span></button>
+            </div>
+
+            <div class="control-stack">
+              <label>Brush size
+                <input id="brushSize" type="range" min="1" max="96" value="18" />
+              </label>
+              <label>Opacity
+                <input id="brushOpacity" type="range" min="5" max="100" value="94" />
+              </label>
+              <label>Softness
+                <input id="brushSoftness" type="range" min="0" max="100" value="18" />
+              </label>
+              <label>Spray density
+                <input id="sprayDensity" type="range" min="8" max="90" value="36" />
+              </label>
+              <div class="toggle-row">
+                <label><input id="smoothStroke" type="checkbox" checked /> Smooth</label>
+                <label><input id="dripMode" type="checkbox" checked /> Drips</label>
+              </div>
+            </div>
+
+            <div class="preset-grid" aria-label="Brush presets">
+              <button class="preset-btn" data-preset="fat-cap" type="button">Fat Cap</button>
+              <button class="preset-btn" data-preset="needle-cap" type="button">Needle Cap</button>
+              <button class="preset-btn" data-preset="paint-marker" type="button">Paint Marker</button>
+              <button class="preset-btn" data-preset="wet-ink" type="button">Wet Ink</button>
+              <button class="preset-btn" data-preset="neon-tube" type="button">Neon Tube</button>
+              <button class="preset-btn" data-preset="chalk" type="button">Chalk</button>
+              <button class="preset-btn" data-preset="smoke-line" type="button">Smoke Line</button>
+              <button class="preset-btn" data-preset="glitch" type="button">Glitch Brush</button>
+            </div>
+          </aside>
+
+          <section class="canvas-zone" aria-label="Shared painting canvas">
+            <div class="canvas-commandbar">
+              <label class="artist-tag">Artist tag
+                <input id="artistName" maxlength="24" autocomplete="off" placeholder="Anonymous" />
+              </label>
+              <div class="command-group" role="toolbar" aria-label="Canvas commands">
+                <button class="icon-btn" id="undoBtn" type="button" title="Undo (Ctrl/Cmd+Z)" aria-label="Undo">↶</button>
+                <button class="icon-btn" id="redoBtn" type="button" title="Redo (Ctrl/Cmd+Shift+Z)" aria-label="Redo">↷</button>
+                <button class="icon-btn" id="clearMineBtn" type="button" title="Clear my last stroke" aria-label="Clear my last stroke">⌫</button>
+                <button class="icon-btn" id="zoomOutBtn" type="button" title="Zoom out" aria-label="Zoom out">−</button>
+                <button class="icon-btn" id="zoomInBtn" type="button" title="Zoom in" aria-label="Zoom in">+</button>
+                <button class="icon-btn" id="fitViewBtn" type="button" title="Fit wall to view" aria-label="Fit wall to view">□</button>
+                <button class="icon-btn" id="resetViewBtn" type="button" title="Reset view" aria-label="Reset view">⌖</button>
+                <button class="icon-btn" id="fullscreenBtn" type="button" title="Fullscreen" aria-label="Fullscreen">⛶</button>
+                <button class="btn secondary" id="saveWallBtn" type="button">Save Wall</button>
+              </div>
+            </div>
+
+            <div class="canvas-frame grid-on" id="canvasFrame" data-texture="brick">
+              <canvas id="paintingCanvas" width="1600" height="1000" aria-label="Shared painting wall"></canvas>
+              <div class="canvas-empty" id="canvasEmptyState">
+                <strong>Pick a tool and mark the wall.</strong>
+                <span>Use Save Wall to lock in the latest mural state.</span>
+              </div>
+              <div class="canvas-toast" id="canvasToast" role="status" aria-live="polite"></div>
+            </div>
+          </section>
+
+          <aside class="paint-panel inspector-dock" aria-label="Painting controls">
+            <div class="dock-tabs" role="tablist" aria-label="Inspector panels">
+              <button class="dock-tab active" data-panel="colorPanel" type="button">Color</button>
+              <button class="dock-tab" data-panel="objectPanel" type="button">Objects</button>
+              <button class="dock-tab" data-panel="sharePanel" type="button">Share</button>
+              <button class="dock-tab admin-only" data-panel="adminPanel" type="button" hidden>Admin</button>
+            </div>
+
+            <section class="dock-panel active" id="colorPanel">
+              <div class="panel-kicker">Color system</div>
+              <div class="color-pair">
+                <label>Primary
+                  <input id="primaryColor" type="color" value="#76ff62" />
+                </label>
+                <label>Secondary
+                  <input id="secondaryColor" type="color" value="#ff3ac8" />
+                </label>
+              </div>
+              <label>Alpha
+                <input id="alphaControl" type="range" min="5" max="100" value="100" />
+              </label>
+              <div class="toggle-row">
+                <label><input id="gradientMode" type="checkbox" /> Gradient</label>
+                <label><input id="fillMode" type="checkbox" /> Fill shapes</label>
+              </div>
+              <button class="btn mini" id="eyedropperBtn" type="button">Eyedropper</button>
+              <div class="recent-row" id="recentColors" aria-label="Recent colors"></div>
+              <div class="palette-list" id="paletteList" aria-label="Preset palettes"></div>
+            </section>
+
+            <section class="dock-panel" id="objectPanel">
+              <div class="panel-kicker">Objects, images, layers</div>
+              <div class="control-stack compact">
+                <label>Shape
+                  <select id="shapeSelect">
+                    <option value="rect">Rectangle</option>
+                    <option value="circle">Circle</option>
+                    <option value="triangle">Triangle</option>
+                    <option value="polygon">Polygon</option>
+                    <option value="star">Star</option>
+                  </select>
+                </label>
+                <label>Stencil
+                  <select id="stencilSelect">
+                    <option value="arrow">Arrow</option>
+                    <option value="splat">Splat</option>
+                    <option value="star">Star burst</option>
+                    <option value="bolt">Lightning</option>
+                    <option value="speech">Speech bubble</option>
+                    <option value="leaf">Leaf</option>
+                    <option value="tag">Tag slash</option>
+                    <option value="abstract">Abstract shard</option>
+                  </select>
+                </label>
+                <label>Text
+                  <input id="textValue" maxlength="80" placeholder="GBS TAG" />
+                </label>
+                <div class="text-row">
+                  <select id="fontSelect" aria-label="Font family">
+                    <option value="Impact, Haettenschweiler, 'Arial Narrow Bold', Arial, sans-serif">Impact</option>
+                    <option value="Arial Black, Gadget, sans-serif">Arial Black</option>
+                    <option value="Trebuchet MS, Arial, sans-serif">Trebuchet</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="Courier New, monospace">Courier</option>
+                  </select>
+                  <input id="fontSize" type="number" min="12" max="240" value="72" aria-label="Font size" />
+                </div>
+                <div class="toggle-row">
+                  <label><input id="textOutline" type="checkbox" checked /> Outline</label>
+                  <label><input id="textGlow" type="checkbox" checked /> Glow</label>
+                </div>
+              </div>
+
+              <div class="image-drop" id="imageDrop">
+                <input id="imageUpload" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+                <strong>Drop, paste, or upload image</strong>
+                <span id="imageUploadHint">Log in to upload images. PNG, JPG, WebP, GIF. SVG is blocked.</span>
+              </div>
+
+              <div class="object-actions" role="toolbar" aria-label="Object actions">
+                <button class="icon-btn" id="duplicateBtn" type="button" title="Duplicate selected (Ctrl/Cmd+D)" aria-label="Duplicate selected">⧉</button>
+                <button class="icon-btn" id="deleteBtn" type="button" title="Delete selected" aria-label="Delete selected">×</button>
+                <button class="icon-btn" id="bringForwardBtn" type="button" title="Bring forward" aria-label="Bring forward">▲</button>
+                <button class="icon-btn" id="sendBackwardBtn" type="button" title="Send backward" aria-label="Send backward">▼</button>
+                <button class="icon-btn" id="lockBtn" type="button" title="Lock/unlock selected" aria-label="Lock or unlock selected">◇</button>
+                <button class="icon-btn" id="hideBtn" type="button" title="Hide/show selected" aria-label="Hide or show selected">◐</button>
+                <button class="icon-btn" id="groupBtn" type="button" title="Group selected" aria-label="Group selected">▣</button>
+                <button class="icon-btn" id="ungroupBtn" type="button" title="Ungroup selected" aria-label="Ungroup selected">▢</button>
+                <button class="icon-btn" id="flipXBtn" type="button" title="Flip horizontal" aria-label="Flip horizontal">⇆</button>
+                <button class="icon-btn" id="flipYBtn" type="button" title="Flip vertical" aria-label="Flip vertical">⇅</button>
+                <button class="icon-btn" id="cropBtn" type="button" title="Crop selected image tighter" aria-label="Crop selected image">⌗</button>
+                <button class="icon-btn" id="fitImageBtn" type="button" title="Fit selected image to wall" aria-label="Fit selected image">▤</button>
+              </div>
+
+              <div class="nav-options">
+                <label><input id="gridToggle" type="checkbox" checked /> Grid</label>
+                <label><input id="snapToggle" type="checkbox" /> Snap</label>
+                <label>Symmetry
+                  <select id="symmetryMode">
+                    <option value="none">None</option>
+                    <option value="horizontal">Mirror L/R</option>
+                    <option value="vertical">Mirror T/B</option>
+                    <option value="radial">Radial x4</option>
+                  </select>
+                </label>
+                <label>Texture
+                  <select id="textureMode">
+                    <option value="brick">Brick wall</option>
+                    <option value="concrete">Concrete</option>
+                    <option value="paper">Paper</option>
+                    <option value="transparent">Transparent</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="mini-map-wrap">
+                <div>
+                  <strong>Mini-map</strong>
+                  <span id="wallVersion">v0</span>
+                </div>
+                <img id="miniMap" alt="Small preview of the current wall" />
+              </div>
+
+              <div class="layer-list" id="layerList" aria-label="Canvas layers"></div>
+            </section>
+
+            <section class="dock-panel" id="sharePanel">
+              <div class="panel-kicker">Export, snapshots, safety</div>
+              <div class="auth-panel">
+                <div>
+                  <strong id="authTitle">Account</strong>
+                  <span id="authSubtitle">Log in to upload images and identify your contributions.</span>
+                </div>
+                <input id="authEmail" type="email" autocomplete="email" placeholder="email@example.com" />
+                <div class="auth-actions">
+                  <button class="btn secondary" id="loginBtn" type="button">Send Login Link</button>
+                  <button class="btn ghost" id="logoutBtn" type="button" hidden>Logout</button>
+                </div>
+              </div>
+              <div class="share-actions">
+                <button class="btn primary" id="downloadPngBtn" type="button">Download PNG</button>
+                <button class="btn secondary" id="downloadTransparentBtn" type="button">Transparent PNG</button>
+                <button class="btn secondary" id="copyLinkBtn" type="button">Copy Share Link</button>
+              </div>
+              <div class="report-form" aria-label="Report wall">
+                <select id="reportReason" aria-label="Report reason">
+                  <option value="spam">Spam or flood</option>
+                  <option value="abuse">Abuse or harassment</option>
+                  <option value="nsfw">NSFW content</option>
+                  <option value="hate">Hate content</option>
+                  <option value="personal_info">Personal info</option>
+                  <option value="copyright">Copyright concern</option>
+                  <option value="other">Other</option>
+                </select>
+                <input id="reportComment" maxlength="280" placeholder="Optional note for admins" />
+                <button class="btn ghost" id="reportWallBtn" type="button">Report Wall</button>
+              </div>
+              <div class="snapshot-form">
+                <input id="snapshotTitle" maxlength="40" placeholder="Snapshot title" />
+                <button class="btn primary" id="snapshotBtn" type="button">Create Snapshot</button>
+              </div>
+              <div class="snapshot-list" id="snapshotList"></div>
+              <details class="respect-note">
+                <summary>Respect the Wall</summary>
+                <p>Build on the mural, avoid personal info, and do not cover someone else's work just to wipe it out. Reports, resets, restores, image uploads, and moderation actions are protected by Supabase Auth and server-side checks.</p>
+              </details>
+              <details class="shortcut-note">
+                <summary>Keyboard</summary>
+                <p>B brush, E eraser, T text, V select, L line, R rectangle, C circle, G grid, Delete removes selected, Ctrl/Cmd+S saves.</p>
+              </details>
+            </section>
+
+            <section class="dock-panel admin-panel" id="adminPanel">
+              <div class="panel-kicker">Admin moderation</div>
+              <div class="admin-warning">
+                Admin actions are logged. Reset and restore create backup snapshots first.
+              </div>
+              <div class="share-actions">
+                <button class="btn primary" id="adminSnapshotBtn" type="button">Admin Snapshot</button>
+                <button class="btn secondary" id="moderateHideBtn" type="button">Hide Selected Object</button>
+                <button class="btn secondary" id="moderateLockBtn" type="button">Lock Selected Object</button>
+                <button class="btn ghost danger" id="moderateDeleteBtn" type="button">Delete Selected Object</button>
+                <button class="btn ghost danger" id="resetWallBtn" type="button">Reset Wall</button>
+              </div>
+              <div class="admin-list-block">
+                <h3>Snapshots</h3>
+                <div id="adminSnapshotList" class="admin-mini-list"></div>
+              </div>
+              <div class="admin-list-block">
+                <h3>Reports</h3>
+                <div id="reportQueue" class="admin-mini-list"></div>
+              </div>
+              <div class="admin-list-block">
+                <h3>Assets</h3>
+                <div id="assetQueue" class="admin-mini-list"></div>
+              </div>
+              <div class="admin-list-block">
+                <h3>Logs</h3>
+                <div id="moderationLogList" class="admin-mini-list"></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="/assets/js/vendor/fabric.min.js"></script>
+  <script type="module" src="../assets/js/painting-room.js"></script>
+</body>
+</html>
